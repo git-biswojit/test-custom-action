@@ -1,0 +1,13 @@
+name: 'Hello Echo Action'
+description: 'A simple action that echoes hello'
+author: 'biswojit'
+
+branding:
+  icon: 'message-circle'
+  color: 'blue'
+
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "hello"
+      shell: bash

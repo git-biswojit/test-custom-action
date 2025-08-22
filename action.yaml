@@ -1,6 +1,24 @@
 name: 'Hello Echo Action'
-description: 'A simple action that echoes hello'
+description: 'A simple action that echoes a customizable message'
 author: 'biswojit'
+
+inputs:
+  message:
+    description: 'The message to echo'
+    required: false
+    default: 'hello'
+  name:
+    description: 'Name to greet (optional)'
+    required: false
+    default: 'World'
+
+outputs:
+  timestamp:
+    description: 'The time when the message was echoed'
+    value: ${{ steps.echo-step.outputs.timestamp }}
+  full-message:
+    description: 'The complete message that was echoed'
+    value: ${{ steps.echo-step.outputs.full-message }}
 
 branding:
   icon: 'message-circle'
@@ -9,5 +27,14 @@ branding:
 runs:
   using: 'composite'
   steps:
-    - run: echo "hello"
+    - id: echo-step
+      run: |
+        MESSAGE="${{ inputs.message }}"
+        NAME="${{ inputs.name }}"
+        TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+        FULL_MESSAGE="$MESSAGE, $NAME!"
+
+        echo "Echoing: $FULL_MESSAGE"
+        echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+        echo "full-message=$FULL_MESSAGE" >> $GITHUB_OUTPUT
       shell: bash

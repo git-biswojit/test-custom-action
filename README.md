@@ -5,6 +5,7 @@ A repository for testing and learning how to create custom GitHub Actions and pu
 ## Overview
 
 This project serves as a sandbox for experimenting with different types of GitHub Actions:
+
 - JavaScript/TypeScript Actions
 - Docker Actions
 - Composite Actions
@@ -42,11 +43,13 @@ cd test-custom-action
 JavaScript actions run directly on the runner and are fast to execute. They're great for simple automations and API interactions.
 
 **Pros:**
+
 - Fast execution
 - Easy to debug
 - Rich ecosystem (npm packages)
 
 **Cons:**
+
 - Limited to JavaScript runtime
 - Potential security concerns with dependencies
 
@@ -55,11 +58,13 @@ JavaScript actions run directly on the runner and are fast to execute. They're g
 Docker actions package your code in a Docker container, providing a consistent execution environment.
 
 **Pros:**
+
 - Language agnostic
 - Consistent environment
 - Full control over dependencies
 
 **Cons:**
+
 - Slower startup time
 - Larger package size
 - Only works on Linux runners
@@ -69,11 +74,13 @@ Docker actions package your code in a Docker container, providing a consistent e
 Composite actions combine multiple workflow steps into a single reusable action.
 
 **Pros:**
+
 - Reuse existing actions
 - Mix different action types
 - No additional runtime overhead
 
 **Cons:**
+
 - Limited customization
 - Debugging can be complex
 
@@ -82,6 +89,7 @@ Composite actions combine multiple workflow steps into a single reusable action.
 ### For JavaScript Actions
 
 1. Initialize a new Node.js project:
+
 ```bash
 npm init -y
 npm install @actions/core @actions/github
@@ -89,6 +97,7 @@ npm install -D @types/node typescript
 ```
 
 2. Create basic action structure:
+
 ```
 action.yml
 src/
@@ -99,11 +108,13 @@ package.json
 ### For Docker Actions
 
 1. Create Dockerfile:
+
 ```bash
 touch Dockerfile
 ```
 
 2. Create action metadata:
+
 ```bash
 touch action.yml
 ```
@@ -113,6 +124,7 @@ touch action.yml
 ### Local Testing
 
 1. **Using act**: Test actions locally with act
+
 ```bash
 # Install act
 brew install act  # macOS
@@ -124,6 +136,7 @@ act
 ```
 
 2. **Unit Testing**: Write tests for your action logic
+
 ```bash
 npm test
 ```
@@ -149,6 +162,7 @@ Create test workflows in `.github/workflows/test.yml` to verify your action work
    - Document all inputs/outputs
 
 2. **Create a release**:
+
    ```bash
    git tag -a v1.0.0 -m "First release"
    git push origin v1.0.0
@@ -251,16 +265,19 @@ runs:
 ## Resources
 
 ### Official Documentation
+
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [Creating Actions](https://docs.github.com/en/actions/creating-actions)
 - [Publishing Actions](https://docs.github.com/en/actions/creating-actions/publishing-actions-in-github-marketplace)
 
 ### Tools and Libraries
+
 - [@actions/toolkit](https://github.com/actions/toolkit) - Official toolkit for building actions
 - [act](https://github.com/nektos/act) - Run GitHub Actions locally
 - [action-validator](https://github.com/mpalmer/action-validator) - Validate action.yml files
 
 ### Examples and Templates
+
 - [TypeScript Action Template](https://github.com/actions/typescript-action)
 - [JavaScript Action Template](https://github.com/actions/javascript-action)
 - [Docker Action Template](https://github.com/actions/container-action)
